@@ -13,8 +13,8 @@ export function CtaFinal() {
     <section className="relative overflow-hidden py-28 text-center md:py-36">
       <FundoSecao
         src="/img/fundo-02.webp"
-        opacidade={0.3}
-        veu="linear-gradient(180deg, rgba(10,19,48,.95) 0%, rgba(10,19,48,.84) 50%, rgba(10,19,48,.96) 100%)"
+        opacidade={0.5}
+        veu="linear-gradient(180deg, rgba(10,19,48,.9) 0%, rgba(10,19,48,.68) 50%, rgba(10,19,48,.92) 100%)"
       />
 
       <div className="wrap relative z-conteudo">

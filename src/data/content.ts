@@ -129,7 +129,7 @@ export const madeiras: Madeira[] = [
     nome: "Pinus Tratado",
     nivel: 1,
     nivelTag: "Custo benefício",
-    img: "/img/madeira-pinus.webp",
+    img: "/img/madeira-pinus.webp?v=2",
     cor: "#C08A4E",
     bullets: [
       "15 anos de garantia de fábrica",
@@ -143,7 +143,7 @@ export const madeiras: Madeira[] = [
     nome: "Angelim Pedra",
     nivel: 2,
     nivelTag: "Madeira nobre",
-    img: "/img/madeira-angelim.webp",
+    img: "/img/madeira-angelim.webp?v=2",
     cor: "#9C5333",
     bullets: [
       "Tom avermelhado natural que valoriza o ambiente",

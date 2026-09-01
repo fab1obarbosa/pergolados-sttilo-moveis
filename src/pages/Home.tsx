@@ -26,7 +26,7 @@ export function Home() {
         <Dor />
 
         <FaixaScroll
-          src="/img/flow-01.webp"
+          src="/img/flow-01.webp?v=2"
           alt="Pergolado de madeira cobrindo uma área externa"
           frase="A sombra certa muda o uso do espaço inteiro."
         />
@@ -39,7 +39,7 @@ export function Home() {
         <Portfolio />
 
         <FaixaScroll
-          src="/img/flow-02.webp"
+          src="/img/flow-02.webp?v=2"
           alt="Estrutura de madeira natural em área de lazer"
           frase="Cada peça sai da oficina pronta para subir."
         />

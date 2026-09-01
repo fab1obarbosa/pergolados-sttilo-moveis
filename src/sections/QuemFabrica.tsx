@@ -7,7 +7,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export function QuemFabrica() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const desloca = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
+  const desloca = useTransform(scrollYProgress, [0, 1], ["-3.5%", "3.5%"]);
 
   return (
     <section id="sttilo" className="relative bg-serragem text-tinta">
@@ -58,7 +58,7 @@ export function QuemFabrica() {
             src="/img/jonathan.webp"
             alt="Jonathan, responsável pela Sttilo Móveis, na oficina"
             loading="lazy"
-            className="absolute inset-0 h-[114%] w-full object-cover"
+            className="absolute inset-0 h-[108%] w-full object-cover object-[50%_30%]"
           />
         </div>
       </div>

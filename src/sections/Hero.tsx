@@ -92,7 +92,7 @@ export function Hero() {
           initial={reduzido ? { opacity: 0 } : { opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
-          className="relative lg:-mr-[5vw] xl:-mr-[7vw]"
+          className="relative"
         >
           {/* clarão atrás da peça: é o que dá profundidade e cola a estrutura no fundo */}
           <div

@@ -321,7 +321,7 @@ export function Pergolado3D({ className = "" }: { className?: string }) {
         const ce = eOut(cl(t / 8.4));
         const idle = Math.max(0, t - 8.4);
         const ang = -0.78 + ce * 0.36 + Math.sin(idle * 0.13) * 0.15;
-        const rad = (12.6 - ce * 4.7) * radK;
+        const rad = (13.0 - ce * 4.3) * radK;
         const hgt = 0.95 + ce * 1.6 + Math.sin(idle * 0.1) * 0.12;
         camera.position.set(Math.sin(ang) * rad, hgt, Math.cos(ang) * rad);
         camera.lookAt(0, 1.15 + ce * 0.28, 0);

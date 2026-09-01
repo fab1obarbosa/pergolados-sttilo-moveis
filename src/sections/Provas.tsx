@@ -70,11 +70,11 @@ export function Provas() {
   }, [embla]);
 
   return (
-    <section className="relative overflow-hidden bg-noite py-24 md:py-28">
+    <section className="relative overflow-hidden bg-noite pb-16 pt-24 md:pb-20 md:pt-28">
       <FundoSecao
         src="/img/fundo-01.webp"
-        opacidade={0.28}
-        veu="linear-gradient(180deg, rgba(10,19,48,.93) 0%, rgba(10,19,48,.8) 45%, rgba(10,19,48,.95) 100%)"
+        opacidade={0.45}
+        veu="linear-gradient(180deg, rgba(10,19,48,.88) 0%, rgba(10,19,48,.66) 45%, rgba(10,19,48,.9) 100%)"
       />
 
       <div className="relative z-conteudo">
