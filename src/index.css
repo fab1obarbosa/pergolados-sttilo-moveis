@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------
+   Fontes da marca Sttilo, servidas do próprio domínio.
+   Barlow Condensed nos títulos, Poppins no corpo (brand book).
+   --------------------------------------------------------------- */
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/fonts/barlow-condensed-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/fonts/barlow-condensed-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/poppins-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/poppins-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/poppins-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* quatro superfícies nomeadas: cada seção escolhe uma, nunca a mesma
+     duas vezes seguidas. É isso que quebra a monotonia azul. */
+  --noite: #0a1330; /* azul quase preto, para seção com foto */
+  --oficina: #102a63; /* o azul da marca */
+  --serragem: #f2eee7; /* claro, seção de informação */
+  --carvao: #111111; /* preto, seção de contraste */
+
+  --laranja: #e85d24;
+  --laranja-claro: #f4a256;
+  --tinta: #0e1a33; /* texto sobre superfície clara */
+  --tinta-fraca: #55607a;
+  --claro-fraco: #aebbd6; /* texto secundário sobre superfície escura */
+
+  --ease-exp: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  overflow-x: clip;
+  background: var(--oficina);
+}
+
+body {
+  @apply bg-oficina text-white font-body antialiased;
+  margin: 0;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-display;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--laranja);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--laranja-claro);
+  outline-offset: 3px;
+}
+
+/* ---------- escala tipográfica ---------- */
+.h-hero {
+  font-size: clamp(2.6rem, 1.6rem + 4.1vw, 5.2rem);
+}
+.h-sec {
+  font-size: clamp(1.9rem, 1.25rem + 2.7vw, 3.4rem);
+}
+.h-min {
+  font-size: clamp(1.4rem, 1.1rem + 1.3vw, 2rem);
+}
+
+.lede {
+  font-size: clamp(1rem, 0.96rem + 0.24vw, 1.12rem);
+  max-width: 62ch;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3.5rem);
+}
+
+/* ---------- revelação de título linha a linha ---------- */
+/* o texto já nasce visível; a máscara só existe sob a classe que o JS liga,
+   então com JS desligado nada some. */
+.linha-mask {
+  display: block;
+  overflow: hidden;
+}
+.linha-mask > span {
+  display: block;
+  will-change: transform;
+}
+
+/* ---------- textura de serragem, só onde faz sentido ---------- */
+.serra {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='140' viewBox='0 0 340 140'%3E%3Cg fill='none' stroke='%23000' stroke-opacity='.045'%3E%3Cpath d='M0 22 Q85 8 170 22 T340 22'/%3E%3Cpath d='M0 54 Q85 40 170 54 T340 54'/%3E%3Cpath d='M0 86 Q85 72 170 86 T340 86'/%3E%3Cpath d='M0 118 Q85 106 170 118 T340 118'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+.serra-clara {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='140' viewBox='0 0 340 140'%3E%3Cg fill='none' stroke='%23F4A256' stroke-opacity='.07'%3E%3Cpath d='M0 22 Q85 8 170 22 T340 22'/%3E%3Cpath d='M0 54 Q85 40 170 54 T340 54'/%3E%3Cpath d='M0 86 Q85 72 170 86 T340 86'/%3E%3Cpath d='M0 118 Q85 106 170 118 T340 118'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* fita métrica: régua fina que separa atos. Detalhe de obra, não enfeite. */
+.regua {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    to right,
+    currentColor 0 1px,
+    transparent 1px 14px
+  );
+  opacity: 0.28;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

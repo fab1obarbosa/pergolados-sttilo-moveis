@@ -1,0 +1,64 @@
+# .htaccess — LP Pergolados Sttilo Móveis
+# Tudo que está em public/ vai para a raiz do build, então este arquivo sobe
+# junto com o dist/ e fica na raiz da pasta do site na Hostgator.
+
+# ------------------------------------------------------------------
+# 1. Fallback de SPA. A página tem a rota /projetos, que não existe como
+#    arquivo no servidor: sem esta regra, abrir ou recarregar /projetos
+#    direto na URL devolve 404 do Apache.
+# ------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # Arquivo ou diretório real é servido normalmente.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # O resto cai no index.html, com a query string preservada.
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ------------------------------------------------------------------
+# 2. Cache. Os assets do Vite têm hash no nome, então podem ser cacheados
+#    por um ano. O index.html nunca, senão o deploy novo não aparece.
+# ------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|png|jpe?g|svg|webp|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------------------
+# 3. Compressão. O bundle do three.js é o arquivo mais pesado da página,
+#    e cai de 734 KB para cerca de 190 KB comprimido.
+# ------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# webp e woff2 servidos com o tipo certo, caso o servidor não conheça
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>

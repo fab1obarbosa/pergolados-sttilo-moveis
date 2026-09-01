@@ -1,0 +1,58 @@
+name: Deploy LP Pergolados Sttilo
+
+# Publica o build estático (Vite) na Hostgator da Sttilo a cada push na main.
+#
+# IMPORTANTE: o secret FTP_SERVER tem que ser o IP DIRETO 162.241.203.56, nunca
+# o hostname. O Cloudflare na frente do sttilomoveis.com quebra a resolução DNS
+# do FTP, e isso já derrubou o deploy da LP mais de uma vez.
+#
+# Secrets (Settings -> Secrets and variables -> Actions -> Secrets):
+#   FTP_SERVER    162.241.203.56
+#   FTP_USERNAME  usuário FTP do cPanel da Sttilo
+#   FTP_PASSWORD  senha desse usuário
+#
+# Variable (mesma tela, aba Variables):
+#   FTP_SERVER_DIR  pasta do site no servidor, SEMPRE com barra no fim.
+#                   Ex.: ./pergolados.sttilomoveis.com/
+#                   Sem a variável, o padrão é ./ (raiz do usuário FTP).
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  # Dois deploys ao mesmo tempo escrevendo por FTP na mesma pasta corrompem
+  # o envio. Um push novo cancela o anterior que ainda estiver rodando.
+  group: deploy-lp-pergolados
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências (npm ci)
+        run: npm ci
+
+      - name: Build de produção
+        run: npm run build
+
+      - name: Deploy via FTP para a Hostgator (Sttilo)
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # A barra no fim do local-dir é o que faz subir o CONTEÚDO do dist/
+          # para dentro da server-dir, em vez de criar uma pasta dist/ lá.
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_SERVER_DIR || './' }}
