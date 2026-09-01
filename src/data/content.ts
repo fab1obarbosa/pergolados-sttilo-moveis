@@ -157,7 +157,7 @@ export const madeiras: Madeira[] = [
     nome: "Grapia",
     nivel: 3,
     nivelTag: "Topo em madeira de lei",
-    img: "/img/flow-01.webp",
+    img: "/img/madeira-grapia.webp",
     cor: "#6E4426",
     bullets: [
       "Também conhecida como Garapeira",
@@ -171,7 +171,7 @@ export const madeiras: Madeira[] = [
     nome: "Madeira Ecológica",
     nivel: 4,
     nivelTag: "Premium sem manutenção",
-    img: "/img/cobertura-simples.webp",
+    img: "/img/madeira-ecologica.webp",
     cor: "#5B4630",
     bullets: [
       "10 anos de garantia, durabilidade estimada em 50",

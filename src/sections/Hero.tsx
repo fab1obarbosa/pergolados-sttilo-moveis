@@ -16,7 +16,7 @@ export function Hero() {
     <section className="relative bg-noite overflow-hidden">
       <div className="serra-clara absolute inset-0 z-fundo opacity-70" aria-hidden="true" />
 
-      <div className="wrap relative z-conteudo grid min-h-[100svh] items-center gap-12 pt-32 pb-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16 lg:pt-28">
+      <div className="wrap relative z-conteudo grid min-h-[100svh] items-center gap-12 pt-32 pb-16 lg:grid-cols-[0.86fr_1.14fr] lg:gap-10 lg:pt-28">
         <div>
           <Titulo
             as="h1"
@@ -92,7 +92,7 @@ export function Hero() {
           initial={reduzido ? { opacity: 0 } : { opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
-          className="relative"
+          className="relative lg:-mr-[5vw] xl:-mr-[7vw]"
         >
           {/* clarão atrás da peça: é o que dá profundidade e cola a estrutura no fundo */}
           <div
@@ -104,7 +104,7 @@ export function Hero() {
             }}
           />
 
-          <div className="relative aspect-[4/5] w-full sm:aspect-[5/4] lg:aspect-[4/5]">
+          <div className="relative aspect-[4/5] w-full sm:aspect-[5/4] lg:aspect-auto lg:h-[min(82vh,760px)]">
             <Pergolado3D className="absolute inset-0" />
           </div>
         </motion.div>

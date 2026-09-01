@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Botao } from "../components/Botao";
 import { Titulo } from "../components/Titulo";
 import { Icon } from "../components/Icon";
+import { FundoSecao } from "../components/FundoSecao";
 import { ctaBullets } from "../data/content";
 import { waLink, waMessages } from "../lib/whatsapp";
 
@@ -10,23 +11,11 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export function CtaFinal() {
   return (
     <section className="relative overflow-hidden py-28 text-center md:py-36">
-      <div className="absolute inset-0 z-fundo" aria-hidden="true">
-        <img src="/img/proj-09.webp" alt="" className="h-full w-full object-cover" />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(180deg, rgba(10,19,48,.95) 0%, rgba(10,19,48,.86) 50%, rgba(10,19,48,.96) 100%)" }}
-        />
-        {/* grade fina, só aqui, como planta de obra */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(174,187,214,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(174,187,214,.07) 1px, transparent 1px)",
-            backgroundSize: "76px 76px",
-            maskImage: "radial-gradient(ellipse 78% 70% at 50% 45%, #000 30%, transparent 76%)",
-          }}
-        />
-      </div>
+      <FundoSecao
+        src="/img/fundo-02.webp"
+        opacidade={0.3}
+        veu="linear-gradient(180deg, rgba(10,19,48,.95) 0%, rgba(10,19,48,.84) 50%, rgba(10,19,48,.96) 100%)"
+      />
 
       <div className="wrap relative z-conteudo">
         <Titulo className="h-sec mx-auto max-w-[18ch]" linhas={[<>Manda uma foto</>, <>do seu espaço.</>]} />

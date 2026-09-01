@@ -17,8 +17,8 @@ export function Entrega() {
         <div ref={ref} className="relative min-h-[58vh] overflow-hidden lg:min-h-full">
           <motion.img
             style={{ y: desloca }}
-            src="/img/proj-12.webp"
-            alt="Estrutura em Angelim Pedra com cobertura sanduíche, entregue em Brusque"
+            src="/img/barato-sai-caro-01.webp"
+            alt="Pergolado em madeira de lei instalado na área externa de uma residência"
             loading="lazy"
             className="absolute inset-0 h-[112%] w-full object-cover"
           />

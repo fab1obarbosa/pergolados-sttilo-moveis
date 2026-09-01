@@ -6,7 +6,16 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Cobertura() {
   return (
-    <section className="relative bg-oficina">
+    <section className="relative overflow-hidden bg-oficina">
+      {/* luz que respira atrás do título, para a seção escura não ficar chapada */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[60%] animate-luz-varre"
+        style={{
+          background:
+            "radial-gradient(46% 58% at 50% 22%, rgba(244,162,86,.14) 0%, rgba(24,95,165,.10) 46%, transparent 74%)",
+        }}
+      />
       <div className="wrap relative z-conteudo py-24 md:py-32">
         <div className="text-center">
           <Titulo className="h-sec mx-auto max-w-[17ch]" linhas={[<>Agora escolha</>, <>a cobertura.</>]} />

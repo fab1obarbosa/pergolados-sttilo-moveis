@@ -9,9 +9,14 @@ export function useLenis() {
     if (reduzido) return;
 
     const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3.2),
+      // mais curto e com saída mais macia: a página acompanha o dedo em vez de
+      // arrastar atrás dele. O multiplicador tira a sensação de scroll pesado.
+      duration: 0.85,
+      easing: (t: number) => 1 - Math.pow(1 - t, 4),
       smoothWheel: true,
+      wheelMultiplier: 1.15,
+      touchMultiplier: 1.6,
+      syncTouch: false,
     });
     registrarLenis(lenis);
 

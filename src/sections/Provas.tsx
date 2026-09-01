@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import { Titulo } from "../components/Titulo";
+import { FundoSecao } from "../components/FundoSecao";
 import { depoimentos } from "../data/content";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -49,7 +50,7 @@ function Cartao({ d }: { d: (typeof depoimentos)[number] }) {
 }
 
 export function Provas() {
-  const [emblaRef, embla] = useEmblaCarousel({ align: "start", loop: true });
+  const [emblaRef, embla] = useEmblaCarousel({ align: "start", loop: true, slidesToScroll: 3, breakpoints: { "(max-width: 1023px)": { slidesToScroll: 1 } } });
   const [idx, setIdx] = useState(0);
   const [pontos, setPontos] = useState<number[]>([]);
 
@@ -70,13 +71,11 @@ export function Provas() {
 
   return (
     <section className="relative overflow-hidden bg-noite py-24 md:py-28">
-      <div className="absolute inset-0 z-fundo" aria-hidden="true">
-        <img src="/img/proj-05.webp" alt="" className="h-full w-full object-cover opacity-20" />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(90deg, rgba(10,19,48,.97) 20%, rgba(10,19,48,.72) 100%)" }}
-        />
-      </div>
+      <FundoSecao
+        src="/img/fundo-01.webp"
+        opacidade={0.28}
+        veu="linear-gradient(180deg, rgba(10,19,48,.93) 0%, rgba(10,19,48,.8) 45%, rgba(10,19,48,.95) 100%)"
+      />
 
       <div className="relative z-conteudo">
         <div className="wrap text-center">

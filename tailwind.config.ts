@@ -40,6 +40,10 @@ export default {
       },
       keyframes: {
         "corre-esq": { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
+        "luz-varre": {
+          "0%,100%": { transform: "translateX(-14%)", opacity: "0.75" },
+          "50%": { transform: "translateX(14%)", opacity: "1" },
+        },
         "pulso-pino": {
           "0%": { transform: "scale(1)", opacity: "0.6" },
           "70%,100%": { transform: "scale(2.6)", opacity: "0" },
@@ -48,6 +52,7 @@ export default {
       animation: {
         "corre-esq": "corre-esq 46s linear infinite",
         "pulso-pino": "pulso-pino 2.8s ease-out infinite",
+        "luz-varre": "luz-varre 18s ease-in-out infinite",
       },
     },
   },
