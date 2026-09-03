@@ -10,11 +10,17 @@
 //   RESEND_API_KEY      chave da conta Resend da Sttilo
 //   NOTIFICATION_EMAIL  sttilomoveis@gmail.com
 //
-// Deploy (precisa estar logado na conta Supabase da Sttilo):
-//   supabase functions deploy orcamento-lp --no-verify-jwt
+// Deploy sem CLI, direto no painel do Supabase da Sttilo:
+//   Edge Functions -> Deploy a new function -> Via Editor
+//   nome da função: orcamento-lp, cola este arquivo inteiro, Deploy.
+//   Depois, nas configurações da função, DESLIGAR o "Verify JWT".
 //
-// O --no-verify-jwt é obrigatório: quem chama é o JavaScript público do site,
-// sem sessão de usuário.
+// Desligar o Verify JWT é obrigatório: quem chama é o JavaScript público do
+// site, sem sessão de usuário. Com ele ligado, toda chamada volta 401 e o
+// e-mail nunca sai.
+//
+// Pelo CLI, o equivalente é:
+//   supabase functions deploy orcamento-lp --no-verify-jwt
 
 interface Formulario {
   nome?: string;
@@ -177,7 +183,7 @@ Deno.serve(async (req: Request) => {
 // ---------------------------------------------------------------------------
 // Self-check: deno run supabase/functions/orcamento-lp/index.ts --self-test
 // ---------------------------------------------------------------------------
-if (Deno.args.includes("--self-test")) {
+if (Deno.args?.includes("--self-test")) {
   console.assert(linkWhatsapp("(47) 99999-0000") === "https://wa.me/5547999990000", "linkWhatsapp");
   console.assert(escapeHtml('<b>"x"</b>') === "&lt;b&gt;&quot;x&quot;&lt;/b&gt;", "escapeHtml");
   console.assert(limpa("  oi  ") === "oi" && limpa(null) === "", "limpa");
