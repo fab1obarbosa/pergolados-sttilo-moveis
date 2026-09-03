@@ -4,11 +4,12 @@ import { Titulo } from "../components/Titulo";
 import { Icon } from "../components/Icon";
 import { FundoSecao } from "../components/FundoSecao";
 import { ctaBullets } from "../data/content";
-import { waLink, waMessages } from "../lib/whatsapp";
+import { useCta } from "../lib/cta";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function CtaFinal() {
+  const cta = useCta("ctaFinal");
   return (
     <section className="relative overflow-hidden py-28 text-center md:py-36">
       <FundoSecao
@@ -38,7 +39,7 @@ export function CtaFinal() {
           transition={{ duration: 0.6, ease: EASE, delay: 0.34 }}
           className="mt-11"
         >
-          <Botao href={waLink(waMessages.ctaFinal)} target="_blank" rel="noopener noreferrer" tamanho="lg" seta>
+          <Botao {...cta} tamanho="lg" seta>
             Pedir meu orçamento
           </Botao>
         </motion.div>

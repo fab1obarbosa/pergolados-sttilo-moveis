@@ -16,14 +16,16 @@ export function FaixaScroll({ src, alt, frase }: { src: string; alt: string; fra
     ["inset(38% 0% 38% 0%)", "inset(0% 0% 0% 0%)", "inset(0% 0% 0% 0%)", "inset(34% 0% 34% 0%)"]
   );
   const desloca = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const veu = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.8, 0.34, 0.34, 0.75]);
+  // véu leve: só o suficiente pra frase ficar legível. Estava em .34 no miolo e
+  // apagava a foto; a legibilidade quem sustenta é o gradiente de baixo + a sombra.
+  const veu = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.62, 0.14, 0.14, 0.58]);
   const textoOp = useTransform(scrollYProgress, [0.3, 0.44, 0.6, 0.72], [0, 1, 1, 0]);
 
   if (reduzido) {
     return (
       <section ref={ref} className="relative h-[42vh] overflow-hidden bg-noite">
         <img src={src} alt={alt} className="h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-noite/55" />
+        <div className="absolute inset-0 bg-noite/30" />
         {frase && (
           <p className="absolute inset-0 grid place-items-center px-6 text-center font-display text-[clamp(1.3rem,3vw,2.2rem)] uppercase text-white">
             {frase}
@@ -44,6 +46,13 @@ export function FaixaScroll({ src, alt, frase }: { src: string; alt: string; fra
           className="absolute inset-0 h-[118%] w-full object-cover will-change-transform"
         />
         <motion.div style={{ opacity: veu }} className="absolute inset-0 bg-noite" />
+        {/* sombra só no miolo, onde a frase passa: mantém o contraste sem lavar a foto */}
+        {frase && (
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(60%_46%_at_50%_50%,rgba(10,19,48,.62)_0%,rgba(10,19,48,0)_75%)]"
+          />
+        )}
       </motion.div>
 
       {frase && (

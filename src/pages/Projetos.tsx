@@ -9,7 +9,7 @@ import { coberturaLabels, galeriaProjetos, type Cobertura } from "../data/conten
 import { waLink, waMessages } from "../lib/whatsapp";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const filtros: (Cobertura | "todos")[] = ["todos", "simples", "sanduiche", "leitosa"];
+const filtros: (Cobertura | "todos")[] = ["todos", "simples", "sanduiche", "leitosa", "outras"];
 
 export function Projetos() {
   const [filtro, setFiltro] = useState<Cobertura | "todos">("todos");

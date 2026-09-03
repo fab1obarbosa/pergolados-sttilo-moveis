@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Botao } from "./Botao";
 import { irPara } from "../lib/scroll";
-import { waLink, waMessages } from "../lib/whatsapp";
+import { useCta } from "../lib/cta";
 
 // ordem da página: projetos, materiais, quem é a Sttilo
 const ancoras = [
@@ -12,6 +12,7 @@ const ancoras = [
 ];
 
 export function Header() {
+  const cta = useCta("header");
   const [escondido, setEscondido] = useState(false);
   const [pousado, setPousado] = useState(false);
   const [ativo, setAtivo] = useState<string>("");
@@ -85,7 +86,7 @@ export function Header() {
           })}
         </nav>
 
-        <Botao href={waLink(waMessages.header)} target="_blank" rel="noopener noreferrer" className="shrink-0">
+        <Botao {...cta} className="shrink-0">
           Orçamento
         </Botao>
       </div>

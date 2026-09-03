@@ -68,12 +68,16 @@ export const etapaBullets = [
   { icon: "clock", title: "20 a 40 dias úteis", text: "Conforme a demanda. Prazo exato com a equipe." },
 ];
 
-export type Cobertura = "simples" | "sanduiche" | "leitosa";
+export type Cobertura = "simples" | "sanduiche" | "leitosa" | "outras";
 
 export const coberturaLabels: Record<Cobertura, string> = {
   simples: "Aluzinco Simples",
   sanduiche: "Aluzinco Sanduíche",
   leitosa: "Fibropolipropileno Leitosa",
+  // obra entregue fora das três coberturas que a Sttilo vende hoje (estrutura
+  // sem telha, policarbonato antigo). Aparece na galeria porque é trabalho
+  // real, mas não entra na comunicação de produto.
+  outras: "Outros acabamentos",
 };
 
 export type Projeto = {
@@ -102,16 +106,17 @@ export const projetos: Projeto[] = [
 /** a home mostra as nove primeiras, de três em três */
 export const projetosHome = projetos.slice(0, 9);
 
-/** a página de trabalhos mostra tudo, mais os detalhes de cobertura */
-export const galeriaProjetos: Projeto[] = [
-  ...projetos,
-  {
-    img: "/img/cobertura-simples.webp",
-    titulo: "Aluzinco Simples",
-    legenda: "Detalhe da cobertura",
-    cobertura: "simples",
-  },
+/** obras que entram só na página de trabalhos, fora do carrossel da home */
+export const projetosExtras: Projeto[] = [
+  { img: "/img/proj-13.webp", titulo: "Camboriú", legenda: "Angelim Pedra · Sem cobertura", cobertura: "outras" },
+  { img: "/img/proj-14.webp", titulo: "Tijucas", legenda: "Madeira Ecológica · Sem cobertura", cobertura: "outras" },
+  { img: "/img/proj-15.webp", titulo: "São João Batista", legenda: "Pinus Tratado · Aluzinco Simples", cobertura: "simples" },
+  { img: "/img/proj-16.webp", titulo: "Tijucas", legenda: "Pinus Tratado · Aluzinco Sanduíche", cobertura: "sanduiche" },
+  { img: "/img/proj-17.webp", titulo: "Palhoça", legenda: "Pinus Tratado · Policarbonato", cobertura: "outras" },
 ];
+
+/** a página de trabalhos mostra tudo */
+export const galeriaProjetos: Projeto[] = [...projetos, ...projetosExtras];
 
 export type Madeira = {
   id: string;
@@ -156,12 +161,12 @@ export const madeiras: Madeira[] = [
     id: "grapia",
     nome: "Grapia",
     nivel: 3,
-    nivelTag: "Topo em madeira de lei",
+    nivelTag: "Topo em madeira nobre",
     img: "/img/madeira-grapia.webp",
     cor: "#6E4426",
     bullets: [
       "Também conhecida como Garapeira",
-      "Madeira de lei de verdade, resistência de geração",
+      "Madeira nobre de verdade, resistência de geração",
       "Maior densidade e estabilidade da nossa linha",
       "Para quem não quer mexer nesse projeto nunca mais",
     ],

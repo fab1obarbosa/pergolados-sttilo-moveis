@@ -4,7 +4,7 @@ import { Titulo } from "../components/Titulo";
 import { Icon } from "../components/Icon";
 import { Botao } from "../components/Botao";
 import { etapas, etapaBullets } from "../data/content";
-import { waLink, waMessages } from "../lib/whatsapp";
+import { useCta } from "../lib/cta";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -12,6 +12,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const PASSO_VH = 45;
 
 export function ComoFazemos() {
+  const cta = useCta("processo");
   const trilho = useRef<HTMLDivElement>(null);
   const [ativo, setAtivo] = useState(0);
 
@@ -88,7 +89,7 @@ export function ComoFazemos() {
                     <p className="lede mt-5 text-claro-fraco">{etapa.text}</p>
 
                     <div className="mt-8">
-                      <Botao href={waLink(waMessages.processo)} target="_blank" rel="noopener noreferrer" seta>
+                      <Botao {...cta} seta>
                         Quero meu orçamento
                       </Botao>
                     </div>

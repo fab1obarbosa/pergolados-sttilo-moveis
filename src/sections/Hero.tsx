@@ -4,12 +4,13 @@ import { Titulo } from "../components/Titulo";
 import { Icon } from "../components/Icon";
 import { Pergolado3D } from "../components/Pergolado3D";
 import { irPara } from "../lib/scroll";
-import { waLink, waMessages } from "../lib/whatsapp";
 import { heroBullets } from "../data/content";
+import { useCta } from "../lib/cta";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
+  const cta = useCta("hero");
   const reduzido = useReducedMotion();
 
   return (
@@ -36,7 +37,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: EASE, delay: 0.34 }}
             className="lede mt-7 text-claro-fraco"
           >
-            Pergolados sob medida em madeira de lei. A gente fabrica na nossa oficina em Porto Belo e instala com a
+            Pergolados sob medida em madeira nobre. A gente fabrica na nossa oficina em Porto Belo e instala com a
             nossa própria equipe, sem terceirizar nada.
           </motion.p>
 
@@ -46,7 +47,7 @@ export function Hero() {
             transition={{ duration: 0.6, ease: EASE, delay: 0.46 }}
             className="mt-9 flex flex-wrap gap-3"
           >
-            <Botao href={waLink(waMessages.hero)} target="_blank" rel="noopener noreferrer" tamanho="lg" seta>
+            <Botao {...cta} tamanho="lg" seta>
               Quero meu orçamento
             </Botao>
             <Botao

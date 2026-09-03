@@ -18,7 +18,7 @@ export function Entrega() {
           <motion.img
             style={{ y: desloca }}
             src="/img/barato-sai-caro-01.webp"
-            alt="Pergolado em madeira de lei instalado na área externa de uma residência"
+            alt="Pergolado em madeira nobre instalado na área externa de uma residência"
             loading="lazy"
             className="absolute inset-0 h-[112%] w-full object-cover"
           />
