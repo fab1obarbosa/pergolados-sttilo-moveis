@@ -2,14 +2,15 @@
  * formulario.ts — Opções, validação, envio e mensagem final do formulário de
  * orçamento da rota /orcamento.
  *
- * Seção 1 repete as 6 perguntas do Quiz Pergolados (mesmos rótulos e mesmos
+ * O formulário vai em 3 etapas: quem é a pessoa, o projeto, o material.
+ * As perguntas são as mesmas do Quiz Pergolados (mesmos rótulos e mesmos
  * valores gravados), para que os dois canais cheguem no WhatsApp da Sttilo
- * falando a mesma língua. Seção 2 é sobre material e é toda opcional: quem
- * ainda não decidiu marca "Ainda não sei" ou deixa em branco.
+ * falando a mesma língua. A etapa 3 é toda opcional: quem ainda não decidiu
+ * marca "Ainda não sei" ou deixa em branco.
  */
 
 /* ============================================================
-   Seção 1 — as mesmas perguntas do quiz
+   Etapa 2 — o projeto
    ============================================================ */
 
 export const INVESTIMENTO_OPCOES = [
@@ -27,7 +28,7 @@ export const PRAZO_OPCOES = [
 ] as const;
 
 /* ============================================================
-   Seção 2 — material, tudo opcional
+   Etapa 3 — material, tudo opcional
    ============================================================ */
 
 /** Marcado quando a pessoa ainda não decidiu. Não vai pro e-mail nem pro WhatsApp. */
@@ -49,16 +50,6 @@ export const COBERTURA_OPCOES = [
   { label: NAO_SEI, desc: "quero a orientação da equipe" },
 ] as const;
 
-export const LOCAL_OPCOES = [
-  "Garagem",
-  "Área gourmet ou churrasqueira",
-  "Piscina ou spa",
-  "Varanda ou sacada",
-  "Jardim ou quintal",
-  "Outro lugar",
-  NAO_SEI,
-] as const;
-
 /* ============================================================
    Estado
    ============================================================ */
@@ -72,7 +63,6 @@ export interface DadosOrcamento {
   tamanho: string;
   madeira: string;
   cobertura: string;
-  local: string;
   observacoes: string;
 }
 
@@ -85,12 +75,20 @@ export const dadosVazios: DadosOrcamento = {
   tamanho: "",
   madeira: "",
   cobertura: "",
-  local: "",
   observacoes: "",
 };
 
+/** As três etapas, na ordem em que aparecem. */
+export const ETAPAS = [
+  { n: 1, titulo: "Quem é você" },
+  { n: 2, titulo: "Sobre o projeto" },
+  { n: 3, titulo: "Material e acabamento" },
+] as const;
+
+export const TOTAL_ETAPAS = ETAPAS.length;
+
 /* ============================================================
-   Validação (só a seção 1 trava o envio)
+   Validação (a etapa 3 é opcional e nunca trava)
    ============================================================ */
 
 /** (00) 00000-0000 conforme a pessoa digita. */
@@ -109,15 +107,19 @@ export function textoValido(valor: string): boolean {
   return valor.trim().length >= 2;
 }
 
-/** Campos da seção 1 que faltam preencher. Vazio = pode enviar. */
-export function camposFaltando(d: DadosOrcamento): (keyof DadosOrcamento)[] {
+/** Campos obrigatórios da etapa que ainda faltam. Vazio = pode avançar. */
+export function camposFaltando(d: DadosOrcamento, etapa: number): (keyof DadosOrcamento)[] {
   const faltando: (keyof DadosOrcamento)[] = [];
-  if (!textoValido(d.nome)) faltando.push("nome");
-  if (!telefoneValido(d.whatsapp)) faltando.push("whatsapp");
-  if (!textoValido(d.cidade)) faltando.push("cidade");
-  if (!d.investimento) faltando.push("investimento");
-  if (!d.prazo) faltando.push("prazo");
-  if (!textoValido(d.tamanho)) faltando.push("tamanho");
+  if (etapa === 1) {
+    if (!textoValido(d.nome)) faltando.push("nome");
+    if (!textoValido(d.cidade)) faltando.push("cidade");
+    if (!telefoneValido(d.whatsapp)) faltando.push("whatsapp");
+  }
+  if (etapa === 2) {
+    if (!d.investimento) faltando.push("investimento");
+    if (!d.prazo) faltando.push("prazo");
+    if (!textoValido(d.tamanho)) faltando.push("tamanho");
+  }
   return faltando;
 }
 
@@ -189,7 +191,6 @@ export function linkWhatsappOrcamento(d: DadosOrcamento): string {
   if (preenchido(d.tamanho)) linhas.push(`Projeto de aproximadamente ${d.tamanho.trim()}.`);
   if (preenchido(d.investimento)) linhas.push(`Investimento previsto: ${d.investimento}.`);
   if (preenchido(d.prazo)) linhas.push(`Prazo: ${d.prazo}.`);
-  if (preenchido(d.local)) linhas.push(`Vai ficar em: ${d.local}.`);
   if (preenchido(d.madeira)) linhas.push(`Madeira: ${d.madeira}.`);
   if (preenchido(d.cobertura)) linhas.push(`Cobertura: ${d.cobertura}.`);
   if (preenchido(d.observacoes)) linhas.push(`Observações: ${d.observacoes.trim()}`);

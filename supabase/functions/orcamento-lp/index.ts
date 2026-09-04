@@ -31,7 +31,6 @@ interface Formulario {
   tamanho?: string;
   madeira?: string;
   cobertura?: string;
-  local?: string;
   observacoes?: string;
   utm_source?: string | null;
   utm_campaign?: string | null;
@@ -88,7 +87,6 @@ function montaHtml(f: Required<Pick<Formulario, "nome" | "whatsapp">> & Formular
     ["Investimento", limpa(f.investimento)],
     ["Prazo", limpa(f.prazo)],
     ["Tamanho do projeto", limpa(f.tamanho)],
-    ["Onde vai ficar", limpa(f.local)],
     ["Madeira", limpa(f.madeira)],
     ["Cobertura", limpa(f.cobertura)],
     ["Observações", limpa(f.observacoes)],
