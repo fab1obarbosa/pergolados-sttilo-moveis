@@ -113,6 +113,7 @@ export const projetosExtras: Projeto[] = [
   { img: "/img/proj-15.webp", titulo: "São João Batista", legenda: "Pinus Tratado · Aluzinco Simples", cobertura: "simples" },
   { img: "/img/proj-16.webp", titulo: "Tijucas", legenda: "Pinus Tratado · Aluzinco Sanduíche", cobertura: "sanduiche" },
   { img: "/img/proj-17.webp", titulo: "Palhoça", legenda: "Pinus Tratado · Policarbonato", cobertura: "outras" },
+  { img: "/img/proj-18.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Fibropolipropileno Leitosa", cobertura: "leitosa" },
 ];
 
 /** a página de trabalhos mostra tudo */
@@ -305,9 +306,10 @@ export const depoimentos = [
       "Equipe muito competente e prestativa, materiais de boa qualidade, orçamento personalizado e execução dentro do prazo combinado. Recomendo!",
   },
   {
-    nome: "Geraldo Safanelli",
-    cidade: "Penha",
-    texto: "Serviço ótimo.",
+    nome: "Gisele Coati",
+    cidade: "Balneário Camboriú",
+    texto:
+      "Conheci a Sttilo Móveis pelo Instagram. Entrei em contato e fui prontamente atendida por excelentes profissionais, que deram todo suporte durante as tratativas até a conclusão da obra. Muito satisfeita com o resultado.",
   },
 ];
 
