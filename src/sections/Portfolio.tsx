@@ -9,8 +9,14 @@ import { projetosHome } from "../data/content";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Portfolio() {
-  // slidesToScroll: 3 -> as setas andam um pacote inteiro por vez
-  const [emblaRef, embla] = useEmblaCarousel({ align: "start", slidesToScroll: 3, containScroll: "trimSnaps" });
+  // desktop: 3 por tela, as setas andam um pacote inteiro. Abaixo disso o dedo passa um projeto por vez,
+  // senão no celular o arraste pula de 3 em 3 e só aparecem os projetos 1, 4 e 7
+  const [emblaRef, embla] = useEmblaCarousel({
+    align: "start",
+    slidesToScroll: 3,
+    containScroll: "trimSnaps",
+    breakpoints: { "(max-width: 1023px)": { slidesToScroll: 1 } },
+  });
   const [pagina, setPagina] = useState(0);
   const [paginas, setPaginas] = useState<number[]>([]);
 
