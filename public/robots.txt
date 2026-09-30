@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pergolados.sttilomoveis.com/sitemap.xml

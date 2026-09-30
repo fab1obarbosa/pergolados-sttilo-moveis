@@ -13,6 +13,25 @@ function ScrollToTop() {
 }
 
 /**
+ * Endereço oficial de cada rota para o Google. /orcamento é a home com o
+ * formulário no lugar da chamada final, então aponta para a home e não
+ * compete com ela na busca.
+ */
+function Canonical() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    let link = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "canonical";
+      document.head.appendChild(link);
+    }
+    link.href = "https://pergolados.sttilomoveis.com" + (pathname === "/orcamento" ? "/" : pathname);
+  }, [pathname]);
+  return null;
+}
+
+/**
  * A SPA não recarrega o HTML ao trocar de rota, então o PageView do snippet do
  * <head> só conta a primeira página. Aqui reemite a cada navegação (pulando a
  * primeira, que o snippet já mandou).
@@ -55,6 +74,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <Canonical />
       <Pixels />
       <Routes>
         <Route path="/" element={<Home />} />
