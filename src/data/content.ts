@@ -115,6 +115,7 @@ export const projetosExtras: Projeto[] = [
   { img: "/img/proj-17.webp", titulo: "Palhoça", legenda: "Pinus Tratado · Policarbonato", cobertura: "outras" },
   { img: "/img/proj-18.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Fibropolipropileno Leitosa", cobertura: "leitosa" },
   { img: "/img/proj-19.webp", titulo: "Canelinha", legenda: "Angelim Pedra · Aluzinco Simples · Verniz aplicado pelo cliente", cobertura: "simples" },
+  { img: "/img/proj-20.webp", titulo: "Navegantes", legenda: "Pinus Tratado · Aluzinco Sanduíche", cobertura: "sanduiche" },
 ];
 
 /** a página de trabalhos mostra tudo */
