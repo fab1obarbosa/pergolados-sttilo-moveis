@@ -1,6 +1,6 @@
 # Decisões estéticas — LP Pergolados (Sttilo Móveis)
 
-> Preenchidas antes de abrir o editor, conforme `11 - PROCESSOS/criacao-visual-de-sites.md`.
+> Preenchidas antes de abrir o editor, conforme `11 - PROCESSOS/Sites/criacao-visual-de-sites.md`.
 > Registro de queimados até aqui: 1 entrada (LP de captação, diagnostico.edgecompany.com.br,
 > ago/2026 — imersa em navy, foto documental duotone, canvas de vetores acelerando com
 > rolagem, assimétrica em diagonal). Esta página diverge em cor, imagem, movimento e
@@ -25,7 +25,7 @@
 4. **O que carrega a imagem:** desenho técnico em SVG (vista explodida do pergolado se
    montando) é o material decisivo, não foto. Fotos reais de projeto entregue, fábrica e
    textura de madeira entram como material de apoio em slots marcados, para o Fabio
-   substituir por imagem real (ver seção 7 do prompt-lp-pergolados-sttilo.md).
+   substituir por imagem real (ver seção 7 de `_ARQUIVOS PARA ELIMINAR/10 - CLIENTES/prompt-lp-pergolados-sttilo.md`).
 
 5. **Movimento assinatura:** o pergolado se monta peça por peça em SVG, uma sequência só,
    dentro do hero: colunas sobem, encaixe aparece, travessas entram nos encaixes, vigas
