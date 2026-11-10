@@ -87,7 +87,7 @@ export type Projeto = {
   cobertura: Cobertura;
 };
 
-/** obra por obra, na ordem das pastas de foto. As nove primeiras vão para a home. */
+/** obra por obra, na ordem das pastas de foto. */
 export const projetos: Projeto[] = [
   { img: "/img/proj-01.webp", titulo: "Tijucas", legenda: "Angelim Pedra · Aluzinco Simples", cobertura: "simples" },
   { img: "/img/proj-02.webp", titulo: "Florianópolis", legenda: "Angelim Pedra · Aluzinco Sanduíche", cobertura: "sanduiche" },
@@ -103,8 +103,6 @@ export const projetos: Projeto[] = [
   { img: "/img/proj-12.webp", titulo: "Brusque", legenda: "Angelim Pedra · Aluzinco Sanduíche", cobertura: "sanduiche" },
 ];
 
-/** a home mostra as nove primeiras, de três em três */
-export const projetosHome = projetos.slice(0, 9);
 
 /** obras que entram só na página de trabalhos, fora do carrossel da home */
 export const projetosExtras: Projeto[] = [
@@ -119,10 +117,23 @@ export const projetosExtras: Projeto[] = [
   { img: "/img/proj-21.webp", titulo: "Balneário Piçarras", legenda: "Cambará · Aluzinco Sanduíche · Material fornecido pelo cliente", cobertura: "sanduiche" },
   { img: "/img/proj-22.webp", titulo: "Brusque", legenda: "Pinus Tratado · Aluzinco Simples", cobertura: "simples" },
   { img: "/img/proj-23.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Aluzinco Simples · Kit de iluminação", cobertura: "simples" },
+  { img: "/img/proj-24.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Aluzinco Sanduíche", cobertura: "sanduiche" },
+  { img: "/img/proj-25.webp", titulo: "Navegantes", legenda: "Angelim Pedra · Deck com escada para SPA", cobertura: "outras" },
+  { img: "/img/proj-26.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Aluzinco Simples · Kit de iluminação", cobertura: "simples" },
 ];
 
 /** a página de trabalhos mostra tudo */
 export const galeriaProjetos: Projeto[] = [...projetos, ...projetosExtras];
+
+/** a home sorteia nove obras da galeria a cada acesso, para todas ganharem destaque */
+export const projetosHome: Projeto[] = (() => {
+  const l = [...galeriaProjetos];
+  for (let i = l.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [l[i], l[j]] = [l[j], l[i]];
+  }
+  return l.slice(0, 9);
+})();
 
 export type Madeira = {
   id: string;
