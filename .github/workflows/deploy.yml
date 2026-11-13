@@ -52,6 +52,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          # FTPS: a senha vai criptografada. Nunca voltar pra ftp puro.
+          protocol: ftps
+          port: 21
           # A barra no fim do local-dir é o que faz subir o CONTEÚDO do dist/
           # para dentro da server-dir, em vez de criar uma pasta dist/ lá.
           local-dir: ./dist/
