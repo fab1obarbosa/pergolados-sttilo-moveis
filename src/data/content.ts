@@ -120,6 +120,8 @@ export const projetosExtras: Projeto[] = [
   { img: "/img/proj-24.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Aluzinco Sanduíche", cobertura: "sanduiche" },
   { img: "/img/proj-25.webp", titulo: "Navegantes", legenda: "Angelim Pedra · Deck com escada para SPA", cobertura: "outras" },
   { img: "/img/proj-26.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Aluzinco Simples · Kit de iluminação", cobertura: "simples" },
+  { img: "/img/proj-27.webp", titulo: "Tijucas", legenda: "Pinus Tratado · Aluzinco Simples · Kit de iluminação", cobertura: "simples" },
+  { img: "/img/proj-28.webp", titulo: "Tijucas", legenda: "Pinus Tratado · Aluzinco Simples", cobertura: "simples" },
 ];
 
 /** a página de trabalhos mostra tudo */
