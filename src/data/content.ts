@@ -122,6 +122,7 @@ export const projetosExtras: Projeto[] = [
   { img: "/img/proj-26.webp", titulo: "Florianópolis", legenda: "Pinus Tratado · Aluzinco Simples · Kit de iluminação", cobertura: "simples" },
   { img: "/img/proj-27.webp", titulo: "Tijucas", legenda: "Pinus Tratado · Aluzinco Simples · Kit de iluminação", cobertura: "simples" },
   { img: "/img/proj-28.webp", titulo: "Tijucas", legenda: "Pinus Tratado · Aluzinco Simples", cobertura: "simples" },
+  { img: "/img/proj-29.webp", titulo: "Canelinha", legenda: "Pinus Tratado · Aluzinco Simples · Garagem", cobertura: "simples" },
 ];
 
 /** a página de trabalhos mostra tudo */
